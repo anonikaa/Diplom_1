@@ -11,19 +11,19 @@ public class BurgerTest {
     Bun bun;
     Burger burger = new Burger();
     @Test
-    public void setBunTest(){
+    public void setBunsSetBunForBurgerTest(){
         Bun bun = new Bun("name",100);
         burger.setBuns(bun);
         Assert.assertEquals("name", burger.bun.getName());
     }
     @Test
-    public void addIngredientTest(){
+    public void addIngredientAddsToListTest(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "name", 100);
         burger.addIngredient(ingredient);
         Assert.assertEquals(true, burger.ingredients.contains(ingredient));
     }
     @Test
-    public void removeIngredientTest(){
+    public void removeIngredientDeletesIngredientFromListTest(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "name", 100);
         burger.ingredients.add(ingredient);
         int index = burger.ingredients.indexOf(ingredient);
@@ -31,7 +31,7 @@ public class BurgerTest {
         Assert.assertEquals(false, burger.ingredients.contains(ingredient));
     }
     @Test
-    public void moveIngredientTest(){
+    public void moveIngredientChangesPositionIngredientInListTest(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "name", 100);
         Ingredient ingredient1 = new Ingredient(IngredientType.FILLING, "name1", 200);
         burger.ingredients.add(ingredient);
@@ -41,7 +41,7 @@ public class BurgerTest {
         burger.moveIngredient(index, nextIndex);
     }
     @Test
-    public void getPriceTest(){
+    public void getPriceReturnsAmountOfBurgerTest(){
         Mockito.when(bun.getPrice()).thenReturn(2F);
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "name", 1);
         burger.ingredients.add(ingredient);
